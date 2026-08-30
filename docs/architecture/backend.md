@@ -67,12 +67,12 @@ flowchart LR
 
 | Camada | Pasta | Responsabilidade |
 |--------|-------|------------------|
-| **API** | `api/` | Receber requisições, validar entrada (Pydantic), mapear schemas, responder. **Sem lógica de negócio complexa**. |
-| **Aplicação** | `application/` | Orquestrar casos de uso, transações, coordenação entre domínio e infra. |
-| **Domínio** | `domain/` | Entidades, regras de negócio, cálculos de métricas, invariantes. Pureza total. |
-| **Integrações** | `integrations/` | Adapters para fontes externas; normalização do dado externo para domínio. |
-| **Infraestrutura** | `infrastructure/` | Persistência, filas, cache, clientes HTTP, config. |
-| **Compartilhado** | `shared/` | Erros padronizados, logging, helpers, config. |
+| **API** | `app/api/` | Receber requisições, validar entrada (Pydantic), mapear schemas, responder. **Sem lógica de negócio complexa**. |
+| **Aplicação** | `app/application/` | Orquestrar casos de uso, transações, coordenação entre domínio e infra. |
+| **Domínio** | `app/domain/` | Entidades, regras de negócio, cálculos de métricas, invariantes. Pureza total. |
+| **Integrações** | `app/integrations/` | Adapters para fontes externas; normalização do dado externo para domínio. |
+| **Infraestrutura** | `app/infrastructure/` | Persistência, filas, cache, clientes HTTP, config. |
+| **Compartilhado** | `app/shared/` | Erros padronizados, logging, helpers, config. |
 
 ## 3. Estrutura de diretórios (normativa, Python)
 

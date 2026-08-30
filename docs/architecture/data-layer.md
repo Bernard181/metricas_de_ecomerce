@@ -53,7 +53,7 @@ Toda ingestão é registrada como um `INGESTION` idempotente:
 
 ## 3. Engine de Métricas
 
-O **Engine de Métricas** calcula KPIs a partir dos dados operacionais normalizados. É um componente **direcionado por regras puras no domínio**.
+O **Engine de Métricas** calcula KPIs a partir dos dados operacionais normalizados. É um componente **baseado em regras puras do domínio**.
 
 ### 3.1 Definição de métrica
 
@@ -103,7 +103,7 @@ flowchart LR
 - **Sob demanda** para leitura imediata (métricas rápidas).
 - **Assíncrono/agendado** para agregações pesadas via fila (ex.: recálculo diário).
 - Resultados de métricas pesadas são **materializados** em tabela (snapshot) e/ou **cacheados** no Redis.
-- O cálculo é **recalculável** a qualquer momento (nunca arcano): a partir dos dados brutos pode-se reproduzir a métrica.
+- O cálculo é **recalculável** a qualquer momento (nunca uma caixa-preta): a partir dos dados brutos pode-se reproduzir a métrica.
 
 ## 4. Séries temporais
 
@@ -134,7 +134,7 @@ def evaluate_rule(rule, current_value) -> bool:
 
 ## 6. Consistência e performance
 
-- Transações SQLAlchemy para operações multi-etapa.
+- Transações SQLAlchemy para operações multietapa.
 - Índices em colunas de filtro frequentes (`organization_id`, `period`, `source`).
 - Consultas pesadas de relatório podem usar materialized views.
 - Cache Redis para leituras quentes; invalidação quando a fonte de dados muda.

@@ -68,4 +68,4 @@ mypy app            # verificação de tipos
 pytest              # testes
 ```
 
-> **Importante:** todo código deve ser **comentado** (docstrings/intenção) e **tipado** — ver `AGENTS.md` e `backend.md` §6.
+> **Importante:** todo código deve ser **comentado** (docstrings/intenção) e **tipado** — ver `../AGENTS.md` e `../docs/architecture/backend.md` §6.

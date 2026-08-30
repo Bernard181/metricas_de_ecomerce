@@ -104,18 +104,26 @@ sequenceDiagram
     A->>A: Exibe alertas / dashboards
 ```
 
-## 5. Mapa de componentes (moeda-alvo)
+## 5. Mapa de componentes (estado-alvo)
 
 ```
 backend/
-├── src/
-│   ├── api/               # Controllers, DTOs, validação, auth
-│   ├── application/       # Casos de uso / serviços de aplicação
-│   ├── domain/            # Entidades, regras de negócio, value objects
-│   ├── integrations/      # Connectors de fontes externas
-│   ├── infrastructure/    # Persistência, filas, cache, clientes HTTP
-│   ├── shared/            # Utilidades comuns (erros, logging, config)
-│   └── main.ts            # Bootstrap / composição de dependências
+├── pyproject.toml
+├── README.md
+├── .env.example
+├── alembic/
+│   └── versions/          # migrações de banco
+├── app/
+│   ├── __init__.py
+│   ├── main.py            # app FastAPI + composição de DI
+│   ├── config.py          # settings tipados (pydantic-settings)
+│   ├── api/               # routers, schemas, validação, auth
+│   ├── application/       # casos de uso / serviços de aplicação
+│   ├── domain/            # entidades, regras de negócio, value objects
+│   ├── integrations/      # connectors de fontes externas
+│   ├── infrastructure/    # persistência, filas, cache, clientes HTTP
+│   └── shared/            # utilidades comuns (erros, logging, config)
+└── tests/                 # pytest
 ```
 
 > A estrutura detalhada e as regras de cada camada estão em [backend.md](backend.md).
@@ -127,6 +135,7 @@ backend/
 | [ADR-0001](../decisions/0001-modular-monolith.md) | Monólito modular como estratégia inicial | Proposta |
 | [ADR-0002](../decisions/0002-api-rest.md) | API REST versionada como contrato público | Proposta |
 | [ADR-0003](../decisions/0003-secure-config-and-secrets.md) | Configuração e secrets fora do código | Proposta |
+| [ADR-0004](../decisions/0004-python-backend.md) | Python como linguagem do backend | Proposta |
 
 ## 7. Documentos relacionados
 

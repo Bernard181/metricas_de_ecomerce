@@ -72,30 +72,37 @@ Cada connector implementa duas responsabilidades:
 
 ```
 integrations/{provider}/
-├── provider.ts        # transporte: cliente, auth, chamadas
-├── normalizer.ts      # mapeia dado bruto -> domínio
-├── config.ts          # config contrato (urls, credenciais refs)
-├── provider.spec.ts   # testes
-└── normalizer.spec.ts
+├── transport.py       # transporte: cliente HTTP, auth da fonte, retry
+├── normalizer.py      # mapeia dado bruto -> domínio
+├── config.py          # config do contrato (urls, refs de credenciais)
+├── test_provider.py   # testes do transporte
+└── test_normalizer.py # testes da normalização
 ```
 
 ### Contrato de saída (modelo neutro)
 
-Os connectors **não** persistem dados brutos no modelo do domínio. Eles produzem objetos de domínio padronizados. Exemplo de um evento de venda normalizado:
+Os connectors **não** persistem dados brutos no modelo do domínio. Eles produzem objetos de domínio padronizados. Exemplo de um evento de venda normalizado (Pydantic v2):
 
-```ts
-interface SalesEvent {
-  id: string;            // id estável (sourceId + externalId)
-  source: string;        // ex.: "vendas-saas-1"
-  occurredAt: Date;      // quando o evento aconteceu na origem
-  items: Array<{
-    productId: string;
-    quantity: number;
-    unitPrice: number;
-  }>;
-  total: number;
-  currency: string;      // ISO 4217
-}
+```python
+from datetime import datetime
+from pydantic import BaseModel
+from decimal import Decimal
+
+
+class SaleItem(BaseModel):
+    product_id: str
+    quantity: int
+    unit_price: Decimal
+
+
+class SalesEvent(BaseModel):
+    # chave de idempotência: {source} + {external_id}
+    code: str
+    source: str          # ex.: "vendas-saas-1"
+    occurred_at: datetime  # quando o evento aconteceu na origem
+    items: list[SaleItem]
+    total: Decimal
+    currency: str        # ISO 4217
 ```
 
 ## 4. Resiliência
@@ -125,17 +132,17 @@ flowchart LR
 
 - Se uma fonte está degradada, o **circuit breaker** abre e evita chamadas desnecessárias por um período.
 - Estados: `closed` (normal) → `open` (parado) → `half-open` (sonda) → `closed`.
-- Implementação via biblioteca (`cockatiel` no Node, ou polly no .NET).
+- Implementação via biblioteca **Python** de circuit breaker (ex.: `circuitbreaker`, `pybreaker`) ou `tenacity`.
 
 ### 4.4 Isolamento de falhas
 
 - A falha de **uma fonte não afeta as demais**.
 - Erros enfileirados em **Dead Letter Queue (DLQ)** para análise posterior.
-- Estado da integração rastreável (`GET /api/v1/integrations/:id`).
+- Estado da integração rastreável (`GET /api/v1/integrations/{id}`).
 
 ## 5. Idempotência e duplicidade
 
-- Toda ingestão usa chave de idempotência: `{source} + {externalEventId}`.
+- Toda ingestão usa chave de idempotência: `{source} + {external_id}`.
 - Índice único no banco para essas chaves evita duplicidade.
 - Processamento repetido de um mesmo evento é seguro (sem duplicar métricas/pedidos).
 
@@ -145,7 +152,7 @@ flowchart LR
 - **Nunca** comitar credenciais no Git.
 - Rotação de credenciais suportada sem deploy (config em runtime).
 
-## 7. Librerías e ferramentas recomendadas (Python)
+## 7. Bibliotecas e ferramentas recomendadas (Python)
 
 | Uso | Tecnologia |
 |-----|------------|
@@ -160,8 +167,8 @@ flowchart LR
 
 1. **Identifique o modo** — webhook e/ou polling disponível na fonte.
 2. **Defina o modelo neutro** — quais eventos/campos essa fonte mapeia.
-3. **Implemente o connector** — transporte (`provider.ts`).
-4. **Implemente a normalização** — `normalizer.ts`.
+3. **Implemente o connector** — transporte (`transport.py`).
+4. **Implemente a normalização** — `normalizer.py`.
 5. **Proteja com resiliência** — timeout, retry, circuit breaker.
 6. **Configure a ingestão** — fila + idempotência + (se polling) agendamento/checkpoint.
 7. **Exponha o webhook** — rota `/api/v1/webhooks/{provider}` com validação de assinatura.

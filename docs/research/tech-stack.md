@@ -24,5 +24,5 @@ Adotar **Python + FastAPI**: melhor equilíbrio para um produto intensivo em dad
 
 ## Consequências
 
-- Exigir **type hints** e **comentários** (ver `backend.md` §6) para manter clareza.
+- Exigir **type hints** e **comentários** (ver [`architecture/backend.md`](../architecture/backend.md) §6) para manter clareza.
 - Para cargas analíticas massivas, avaliar separadamente colunar (ex.: ClickHouse/TimescaleDB) no futuro.

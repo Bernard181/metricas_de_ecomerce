@@ -22,7 +22,7 @@ Regras:
 
 - Quebra de contrato (remover/alterar campo existente) → nova versão `/api/v2`.
 - Adição **aditiva** (novo campo/endpoint) não exige nova versão.
-- Versões antigas são depreciadas com aviso (`Deprecation` header) antes da remoção.
+- Versões antigas são descontinuadas com aviso (`Deprecation` header) antes da remoção.
 
 ## 3. Convenções de recursos
 
@@ -44,12 +44,12 @@ Regras:
 | `201 Created` | Recurso criado. |
 | `202 Accepted` | Operação assíncrona aceita (fila). |
 | `204 No Content` | Remoção sem corpo. |
-| `400 Bad Request` | Validação de entrada falhou. |
-| `401 Unauthorized` | Autenticação ausente/Inválida. |
+| `400 Bad Request` | Requisição malformada ou parâmetro de parsing inválido. |
+| `401 Unauthorized` | Autenticação ausente/inválida. |
 | `403 Forbidden` | Sem permissão para o recurso. |
 | `404 Not Found` | Recurso inexistente. |
 | `409 Conflict` | Conflito de estado (ex.: duplicidade/idempotência). |
-| `422 Unprocessable Entity` | Entidade válida sintaticamente, mas regra de negócio violada. |
+| `422 Unprocessable Entity` | Falha de validação do payload (Pydantic) ou regra de negócio violada. |
 | `429 Too Many Requests` | Rate limit excedido. |
 | `500 Internal Server Error` | Erro inesperado. |
 
@@ -141,14 +141,14 @@ Resposta:
 | `POST` | `/api/v1/auth/login` | Autenticação. |
 | `POST` | `/api/v1/auth/refresh` | Renova token. |
 | `GET` | `/api/v1/metrics` | Lista métricas agregadas. |
-| `GET` | `/api/v1/metrics/:code` | Detalhe de uma métrica. |
-| `GET` | `/api/v1/metrics/:code/series` | Série temporal. |
-| `GET` | `/api/v1/dashboards/:id` | Composição de um dashboard. |
+| `GET` | `/api/v1/metrics/{code}` | Detalhe de uma métrica. |
+| `GET` | `/api/v1/metrics/{code}/series` | Série temporal. |
+| `GET` | `/api/v1/dashboards/{id}` | Composição de um dashboard. |
 | `GET` | `/api/v1/orders` | Pedidos ingeridos. |
 | `POST` | `/api/v1/integrations` | Cria uma integração/connector. |
-| `GET` | `/api/v1/integrations/:id` | Estado de uma integração. |
-| `POST` | `/api/v1/webhooks/:provider` | Entrada de webhook de fonte externa. |
-| `PATCH` | `/api/v1/alert-rules/:id` | Regras de alerta. |
+| `GET` | `/api/v1/integrations/{id}` | Estado de uma integração. |
+| `POST` | `/api/v1/webhooks/{provider}` | Entrada de webhook de fonte externa. |
+| `PATCH` | `/api/v1/alert-rules/{id}` | Regras de alerta. |
 
 ## 10. Autenticidade do contrato (OpenAPI)
 

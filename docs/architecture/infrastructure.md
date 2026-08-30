@@ -36,7 +36,7 @@ flowchart LR
 ## 2. Containerização
 
 - **Dockerfile** por serviço (backend, worker; o frontend vira imagem estática com nginx).
-- Images **imutáveis**: a mesma imagem deu build → vai para todos os ambientes.
+- Images **imutáveis**: a mesma imagem que deu build é usada em todos os ambientes.
 - `docker-compose.yml` para ambiente local de desenvolvimento (API + Postgres + Redis + worker).
 - Multi-arquitetura e versões pinadas têm prioridade.
 

@@ -14,7 +14,7 @@ Usar **Python 3.12+** no backend, com **FastAPI** (web), **Pydantic** (validaç�
 ## Consequências
 
 - **Positivas:** ecossistema forte de dados/análise (`pandas`, `numpy`), legibilidade, rápida iteração, ótima integração com LLM/agentes (o que favorece a produtividade do agente desenvolvedor).
-- **Negativas:** performance de CPU inferior a linguagens compiladas para cargas extremas; curva de atenção com tipagem e performance em hot paths (mitigável com camadas adequadas).
+- **Negativas:** performance de CPU inferior a linguagens compiladas para cargas extremas; custo de atenção com tipagem e performance em hot paths (mitigável com camadas adequadas).
 
 ## Alternativas consideradas
 

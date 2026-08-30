@@ -43,6 +43,6 @@ Identificar os KPIs mais relevantes para operações de e-commerce e produtos di
 
 - Priorizar o primeiro conjunto mínimo de KPIs (MVP).
 - Definir fórmulas exatas e unidades em consenso de negócio.
-- Modelar como métricas no engine (ver `data-layer.md`).
+- Modelar como métricas no engine (ver [`docs/architecture/data-layer.md`](../architecture/data-layer.md)).
 
 > **Atenção para o agente:** este é um documento de pesquisa — não implementar métricas ainda sem a priorização de negócio definida.
