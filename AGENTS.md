@@ -248,6 +248,26 @@ a:
 
 ---
 
+# Regras técnicas do backend (Python)
+
+> Referência rápida do agente. Detalhes em [`docs/architecture/backend.md`](docs/architecture/backend.md).
+
+- **Linguagem: Python 3.12+**. Stack: FastAPI, Pydantic v2, SQLAlchemy 2 + Alembic, PostgreSQL, Redis (fila RQ/ARQ), pytest, ruff.
+- **Arquitetura hexagonal**: `api → application → domain → infrastructure`. Regras de negócio (`domain`) são puras, sem framework.
+- **Todo código comentado e tipado**: docstrings em funções públicas, comentários de intenção (o *porquê*), type hints em todas as assinaturas. Isso é obrigatório para produtividade e manutenção.
+- Camadas: `app/api` (routers/schemas), `app/application` (casos de uso), `app/domain` (entidades/regras/ports), `app/integrations` (connectors), `app/infrastructure` (db/fila/cache/http), `app/shared`.
+- Integrações: cada fonte é um connector isolado; timeout, retry (tenacity), circuit breaker; idempotência via chave `{source}+{external_id}`; falha de uma fonte não afeta as demais.
+- API: REST versao `/api/v{n}`, contrato OpenAPI (automático no FastAPI), JWT, erros padronizados (ver [`docs/architecture/api.md`](docs/architecture/api.md)).
+- Sempre consultar [`docs/architecture/`](docs/architecture/) antes de implementar.
+
+---
+
+# Documentos de arquitetura
+
+Índice e detalhes em [`docs/architecture/README.md`](docs/architecture/README.md): visão geral, backend (Python), API, integrações, dados/métricas, frontend e infraestrutura. Decisões arquiteturais em [`docs/decisions/`](docs/decisions/).
+
+---
+
 # Regra de escopo
 
 Uma tarefa deve resolver um problema.

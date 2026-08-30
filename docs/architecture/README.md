@@ -1,45 +1,26 @@
 # Arquitetura
 
-Esta seção documenta a arquitetura do CloudOps.
+Esta seção documenta a arquitetura do CloudOps — a referência técnica para quem desenvolve o sistema.
 
-## Visão geral
+## Índice de documentos
 
-> Nota: esta seção será preenchida conforme a arquitetura da plataforma for definida.
+| Documento | Descrição |
+|-----------|-----------|
+| [Visão Geral](overview.md) | Arquitetura estratégica, princípios e fluxo de dados. Leia primeiro. |
+| [Backend](backend.md) | Regras técnicas **Python** (FastAPI, camadas, estrutura, comentários). |
+| [API e Contratos](api.md) | Design REST, versionamento, erros, autenticação. |
+| [Integrações](integrations.md) | Como conectar fontes externas (webhook/polling, resiliência). |
+| [Camada de Dados e Métricas](data-layer.md) | Modelo de dados, engine de métricas, insights e alertas. |
+| [Frontend](frontend.md) | Arquitetura do dashboard (React SPA). |
+| [Infraestrutura](infrastructure.md) | CI/CD, deploy, observabilidade e segurança. |
 
-O projeto deverá separar as seguintes camadas (ver `AGENTS.md`):
+## Regras transversais
 
-- API
-- domínio
-- regras de negócio
-- serviços
-- persistência
-- infraestrutura
+- Backend em **Python**; código **comentado** e tipado (ver `backend.md` §6).
+- Camadas: API → Aplicação → Domínio → Infraestrutura.
+- Regras de negócio nunca dependem de frameworks.
+- Toda alteração arquitetural relevante documentada aqui e/ou como ADR (`../decisions/`).
 
-## Fluxo principal
+## Decisões registradas
 
-```
-        FONTES DE DADOS
-              │
-              ▼
-     ┌─────────────────┐
-     │    CloudOps     │
-     │   Data Layer    │
-     └────────┬────────┘
-              │
-              ▼
-        PROCESSAMENTO
-              │
-              ▼
-     ┌─────────────────┐
-     │  MÉTRICAS       │
-     │  INSIGHTS       │
-     │  ALERTAS        │
-     └────────┬────────┘
-              │
-              ▼
-         DECISÕES
-```
-
-## Documentos
-
-- Documentos de arquitetura detalhados serão adicionados aqui conforme forem criados.
+Ver [ADR em `docs/decisions/`](../decisions/README.md).

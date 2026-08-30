@@ -49,4 +49,9 @@ Use o template abaixo para registrar uma nova decisão:
 
 ## Registros
 
-- Nenhuma decisão formal registrada ainda.
+| Código | Título | Status |
+|--------|--------|--------|
+| [0001-modular-monolith](0001-modular-monolith.md) | Monólito modular como estratégia inicial | Proposta |
+| [0002-api-rest](0002-api-rest.md) | API REST versionada como contrato público | Proposta |
+| [0003-secure-config-and-secrets](0003-secure-config-and-secrets.md) | Configuração e secrets fora do código | Proposta |
+| [0004-python-backend](0004-python-backend.md) | Python como linguagem do backend | Proposta |

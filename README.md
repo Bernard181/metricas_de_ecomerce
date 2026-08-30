@@ -133,6 +133,14 @@ cloudops/
 - **AGENTS.md** — regras de desenvolvimento para a IA e para o time.
 - **CONTRIBUTING.md** — guia de contribuição.
 - **CHANGELOG.md** — histórico de mudanças.
-- **docs/architecture/** — documentação de arquitetura.
+- **docs/architecture/** — documentação de arquitetura (Visão Geral, Backend, API, Integrações, Dados, Frontend, Infra).
 - **docs/decisions/** — registro de decisões arquiteturais (ADRs).
 - **docs/research/** — pesquisas e estudos.
+
+## 🛠️ Principais tecnologias
+
+- **Backend (Python):** FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Redis.
+- **Frontend:** React + TypeScript (SPA).
+- **Qualidade/testes:** pytest, ruff, Vitest.
+
+> Detalhes técnicos e regras em [`docs/architecture/`](docs/architecture/).
