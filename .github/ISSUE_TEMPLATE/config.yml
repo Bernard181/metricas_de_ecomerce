@@ -1,0 +1,14 @@
+---
+name: Config
+about: Configuração padrão do repositório (chooser)
+title: ""
+labels: ""
+assignees: ""
+
+---
+
+blank_issues_enabled: false
+contact_links:
+  - name: CloudOps
+    url: https://github.com/Bernard181/metricas_de_ecomerce
+    about: Reporte bugs e sugira funcionalidades pelos templates acima.
