@@ -90,3 +90,49 @@ A plataforma poderá receber dados de diferentes fontes, processá-los e apresen
               │
               ▼
          DECISÕES
+```
+
+---
+
+## 📖 Nossa história
+
+A CloudOps é uma nova startup. Imagine que você é dono de um e-commerce ou loja virtual: geralmente você vai vender e-books e produtos digitais em várias plataformas diferentes, e em cada uma delas você tem acesso às métricas e informações do tipo.
+
+Mas não existe uma plataforma onde você possa juntar tudo isso em um único lugar.
+
+Na **CloudOps**, você poderá gerenciar e orquestrar todo o seu negócio, acompanhando cada métrica e informação. Quanto mais você conhece o próprio negócio, melhor você o gerencia.
+
+> **Know your business. Run it better.**
+
+---
+
+## 🗂️ Estrutura do repositório
+
+```
+cloudops/
+├── README.md
+├── AGENTS.md
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── docs/
+│   ├── architecture/
+│   ├── decisions/
+│   └── research/
+├── backend/
+├── frontend/
+├── tests/
+└── .github/
+    ├── ISSUE_TEMPLATE/
+    └── workflows/
+```
+
+---
+
+## 📚 Documentação
+
+- **AGENTS.md** — regras de desenvolvimento para a IA e para o time.
+- **CONTRIBUTING.md** — guia de contribuição.
+- **CHANGELOG.md** — histórico de mudanças.
+- **docs/architecture/** — documentação de arquitetura.
+- **docs/decisions/** — registro de decisões arquiteturais (ADRs).
+- **docs/research/** — pesquisas e estudos.

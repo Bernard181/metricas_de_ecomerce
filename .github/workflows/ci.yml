@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Backend e frontend ainda não possuem toolchain definida.
+      # Estes passos serão preenchidos conforme o código for implementado.
+
+      - name: Placeholder — estrutura do projeto
+        run: |
+          echo "CloudOps CI"
+          test -d backend
+          test -d frontend
+          test -d tests
+          echo "Estrutura validada com sucesso"
