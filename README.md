@@ -140,7 +140,11 @@ cloudops/
 ## 🛠️ Principais tecnologias
 
 - **Backend (Python):** FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Redis.
-- **Frontend:** React + TypeScript (SPA).
+- **Frontend:** HTML + CSS + JS estático (dashboard).
 - **Qualidade/testes:** pytest, ruff, Vitest.
 
 > Detalhes técnicos e regras em [`docs/architecture/`](docs/architecture/).
+
+## Beta local
+
+O primeiro fluxo demonstrável aceita vendas por CSV e pedidos Shopify por webhook assinado. Consulte [`docs/beta-guide.md`](docs/beta-guide.md).

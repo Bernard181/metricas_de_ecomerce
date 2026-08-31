@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CloudOps — Inteligência para cada operação</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="brand">&#9729; CloudOps</div>
+        <span class="beta">BETA</span>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">VIS&#195;O GERAL &middot; OPERA&#199;&#195;O</p>
+          <h1>Intelig&#234;ncia para<br />cada opera&#231;&#227;o.</h1>
+          <p class="subtitle">
+            Acompanhe vendas e indicadores da sua loja em um &uacute;nico lugar.
+          </p>
+        </div>
+        <aside>
+          <i></i> Dados atualizados pela sua opera&#231;&#227;o<br />
+          <small>CSV ou Shopify</small>
+        </aside>
+      </section>
+
+      <div class="notice" id="notice" hidden></div>
+
+      <section class="metrics">
+        <article>
+          <span>Receita total</span>
+          <strong id="metric-revenue">&mdash;</strong>
+          <small>Dados da sua opera&#231;&#227;o</small>
+        </article>
+        <article>
+          <span>Pedidos</span>
+          <strong id="metric-orders">&mdash;</strong>
+          <small>Dados da sua opera&#231;&#227;o</small>
+        </article>
+        <article>
+          <span>Ticket m&#233;dio</span>
+          <strong id="metric-ticket">&mdash;</strong>
+          <small>Dados da sua opera&#231;&#227;o</small>
+        </article>
+      </section>
+
+      <section class="chart">
+        <p class="eyebrow">RECEITA DI&#193;RIA</p>
+        <h2>Como suas vendas evoluem</h2>
+        <div class="chart-body" id="chart-body" hidden>
+          <svg
+            viewBox="0 0 100 70"
+            preserveAspectRatio="none"
+            role="img"
+            aria-label="Gr&#225;fico de receita di&#225;ria"
+          >
+            <line x1="0" y1="62" x2="100" y2="62" class="chart-grid" />
+            <polyline id="chart-line" points="" />
+          </svg>
+          <div class="chart-labels" id="chart-labels"></div>
+        </div>
+        <p id="chart-empty">
+          Importe <code>docs/sample-sales.csv</code> para visualizar o
+          gr&#225;fico.
+        </p>
+      </section>
+
+      <section class="workspace">
+        <div>
+          <p class="eyebrow">PR&#211;XIMO PASSO</p>
+          <h2>Importe seu hist&#243;rico.</h2>
+          <p>As m&#233;tricas e o gr&#225;fico atualizam automaticamente.</p>
+          <label class="primary">
+            Importar CSV
+            <input type="file" accept=".csv" id="csv-input" />
+          </label>
+        </div>
+        <div>
+          <p class="eyebrow">INTEGRA&#199;&#195;O</p>
+          <div class="shopify">
+            <b>S</b>
+            <strong>Shopify <span>Pronto para conectar</span></strong>
+            <em>Webhook seguro</em>
+          </div>
+        </div>
+      </section>
+
+      <footer>CloudOps &mdash; Know your business. Run it better.</footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
