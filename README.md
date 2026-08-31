@@ -144,3 +144,7 @@ cloudops/
 - **Qualidade/testes:** pytest, ruff, Vitest.
 
 > Detalhes técnicos e regras em [`docs/architecture/`](docs/architecture/).
+
+## Beta local
+
+O primeiro fluxo demonstrável aceita vendas por CSV e pedidos Shopify por webhook assinado. Consulte [`docs/beta-guide.md`](docs/beta-guide.md).
