@@ -12,14 +12,16 @@
    ```
 4. Inicie a API: `uvicorn app.main:app --reload` (porta `8000` por padrão).
 
-### Frontend (Vite/React)
+### Frontend (HTML/CSS/JS estático)
 
-Em `frontend`:
+O frontend é um site **estático** (sem framework nem build): `index.html`, `styles.css` e `app.js` em `frontend/`. O `app.js` busca as métricas na API e renderiza os cartões e o gráfico no navegador.
+
+Para servir em desenvolvimento (usa o Vite apenas como servidor estático):
 ```bash
 npm install
 npm run dev
 ```
-Acesse `http://localhost:5173`.
+Acesse `http://localhost:5173`. Também pode ser servido por qualquer servidor estático.
 
 ### Carregar dados de demonstração
 
@@ -45,7 +47,7 @@ Aponte o frontend local para `http://localhost:8000` (default) usando CORS já c
 O workflow `.github/workflows/ci.yml` roda a cada push/PR:
 
 - **backend**: `ruff check .` + `pytest -q`.
-- **frontend**: `tsc -b && vite build`.
+- **frontend**: validação do site estático (presença dos arquivos `index.html`, `styles.css` e `app.js`).
 
 ## PostgreSQL (ambiente de teste/produção)
 

@@ -140,7 +140,7 @@ cloudops/
 ## 🛠️ Principais tecnologias
 
 - **Backend (Python):** FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Redis.
-- **Frontend:** React + TypeScript (SPA).
+- **Frontend:** HTML + CSS + JS estático (dashboard).
 - **Qualidade/testes:** pytest, ruff, Vitest.
 
 > Detalhes técnicos e regras em [`docs/architecture/`](docs/architecture/).
