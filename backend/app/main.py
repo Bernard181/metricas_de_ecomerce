@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routers import imports, metrics, shopify
 from app.config import settings
-from app.infrastructure.database import Base, engine
+from app.infrastructure.database import engine
+from app.shared.migrations import run_migrations
 
 
 def create_app() -> FastAPI:
@@ -21,9 +22,10 @@ def create_app() -> FastAPI:
     )
 
     @app.on_event("startup")
-    def create_local_tables() -> None:
-        """Cria tabelas somente para reduzir fricção na demonstração local."""
-        Base.metadata.create_all(bind=engine)
+    def apply_migrations() -> None:
+        """Aplica migrações Alembic para SQLite/Postgres no boot da API."""
+        run_migrations()
+        engine.dispose()
 
     @app.get("/health", tags=["health"])
     def health() -> dict[str, str]:
